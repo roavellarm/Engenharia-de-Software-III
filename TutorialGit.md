@@ -1,3 +1,7 @@
+# Comandos GitBash
+
+## Configurações Gerais
+
 ### Configurando identificação do desenvolvedor na máquina (apenas uma vez por máquina):
 $ git config --global user.name "Nome do Desenvolvedor"
 $ git config --global user.email "desenvolvedor@example.com"
