@@ -1,28 +1,36 @@
 # Comandos GitBash
+## Resumo básico:
+#### git clone https://github.com/roavellarm/Engenharia-de-Software-III.git 
+#### git pull
+#### git status
+#### git add .
+#### git commit -m "Mensagem de commit entre aspas"
+#### git push -u origin master
 
-## Configurações Gerais Iniciais
 
-### Configurando identificação do desenvolvedor na máquina (apenas uma vez por máquina):
+# Configurações Gerais Iniciais
+
+## Configurando identificação do desenvolvedor na máquina (apenas uma vez por máquina):
 $ git config --global user.name "Nome do Desenvolvedor"
 
 $ git config --global user.email "desenvolvedor@example.com"
 
-### Conexão de Rede no SENAC:
+## Conexão de Rede no SENAC:
 $ git config --global http.proxy 192.168.7.253:8080
 
-### Se na sua casa não tiver proxy:
+## Se sua rede local não tem proxy:
 $ git config --global --unset http.proxy
 
-### Comandos gerais do CLI
+## Comandos gerais do CLI
 $ cd (+ nome do diretório para entrar)
 
 $ cd .. (para sair do diretório)
 
 $ mkdir (+ nome do diretório para criar um diretorio)
 
-$ ls (para ver o que tem no diretório)
+$ ls (para listar os arquivos do diretório)
 
-$ ls -a (para ver o que tem no diretório incluindo os arquivos git)
+$ ls -a (para listar os arquivos do diretório incluindo os arquivos git)
 
 # Comandos mais utilizados
 
@@ -42,7 +50,7 @@ $ git add .
 $ git commit -m "Digitar aqui sua mensagem de commit entre aspas"
 
 ### Para subir ao repositório remoto (github) o commmit realizado
-git push -u origin master
+$ git push -u origin master
 
 ### Para criar um novo branch
 $ git branch NomeDoMeuBranch
