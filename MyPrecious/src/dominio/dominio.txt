@@ -1,0 +1,4 @@
+Aqui vão ficar as classes models:
+Categoria
+Movimentação
+Metas, etc

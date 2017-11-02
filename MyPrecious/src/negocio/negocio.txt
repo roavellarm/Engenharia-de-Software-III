@@ -1,0 +1,3 @@
+Aqui ficarão as classes de negócio e filtros do sistema:
+CategoriaNegocio
+MovimentacaoNegocio, etc
