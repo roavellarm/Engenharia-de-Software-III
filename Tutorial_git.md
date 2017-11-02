@@ -14,22 +14,22 @@ $ git config --global http.proxy 192.168.7.253:8080
 $ git config --global --unset http.proxy
 
 ### Comandos gerais do CLI
-$ cd (+ nome da pasta para entrar)
+$ cd (+ nome do diretório para entrar)
 
-$ cd .. (para sair da pasta)
+$ cd .. (para sair do diretório)
 
-$ mkdir (+ nome da pasta para criar um diretorio)
+$ mkdir (+ nome do diretório para criar um diretorio)
 
-$ ls (para ver o que tem na pasta)
+$ ls (para ver o que tem no diretório)
 
-$ ls -a (para ver o que tem na pasta incluindo os arquivos git)
+$ ls -a (para ver o que tem no diretório incluindo os arquivos git)
 
 # Comandos mais utilizados
 
 ### Para clonar o repositório do git na máquina
 $ git clone https://github.com/roavellarm/Engenharia-de-Software-III.git 
 
-### Para ver o status da pasta
+### Para ver o status do diretório
 $ git status
 
 ### Para atualizar um repositório local conforme o repositório remoto
