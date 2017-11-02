@@ -1,4 +1,4 @@
-# Comandos GitBash
+# Comandos Git
 ## Resumo básico:
 #### git clone https://github.com/roavellarm/Engenharia-de-Software-III.git 
 #### git pull
