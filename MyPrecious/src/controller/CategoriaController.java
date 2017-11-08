@@ -1,6 +1,6 @@
 package controller;
 
-import mymoney.MyMoney;
+import myprecious.MyPrecious;
 import dominio.Categoria;
 import java.io.IOException;
 import java.net.URL;
@@ -117,7 +117,7 @@ public class CategoriaController implements Initializable {
     private void irEditar(ActionEvent event) throws IOException {
         categoriaSelecionada = tabelaCat.getSelectionModel().getSelectedItem();
         if (categoriaSelecionada != null) {
-            FXMLLoader loader = new FXMLLoader(MyMoney.class.getResource("/view/FormularioCategoria.fxml"));
+            FXMLLoader loader = new FXMLLoader(MyPrecious.class.getResource("/view/FormularioCategoria.fxml"));
             Parent root = (Parent) loader.load();
 
             CategoriaController catController = (CategoriaController) loader.getController();

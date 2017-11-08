@@ -35,14 +35,11 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import myprecious.MyPrecious;
 import negocio.CategoriaNegocio;
 import negocio.MovimentacaoNegocio;
 import negocio.NegocioException;
-import util.DateUtil;
 import view.PrintUtil;
 
 /**
