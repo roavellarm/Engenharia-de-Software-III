@@ -1,4 +1,4 @@
-package mymoney;
+package myprecious;
 
 
 /*
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Francke
  */
-public class MyMoney extends Application {
+public class NyPrecious extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {

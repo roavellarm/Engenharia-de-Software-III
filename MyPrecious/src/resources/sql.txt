@@ -1,0 +1,63 @@
+/*
+INSTRUÇÕES para criação do Banco de Dados no PostgresSQL:
+1) Se tiver o PgAdmin, criar um database com o seguinte nome: mymoneydb
+2) Caso queira criar o database via linha de comando SQL utilizar o código abaixo: 
+CREATE DATABASE mymoneydb
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'C'
+    LC_CTYPE = 'C'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+ATENÇÃO!!
+Obs: A senha padrão utilizada para acessar o servidor foi "123456",
+caso sua senha for diferente no postgres, esta deve ser adicionada(alterada)
+na variável SENHA na classe BDUtil.java localizada no diretório "/dao/impl_BD"
+
+3) Após criar o database, criar as tabelas e carregar os dados iniciais. Para isso,
+basta copiar e colar o texto deste txt na linha de comando SQL do PgAdmin ou NetBeans.
+*/
+----------- CRIAÇÃO DE TABELAS -------------------------------------------------
+-- drop table categoria;
+-- Campos: titulo, tipo
+create table categoria (
+    titulo varchar(30),
+    tipo boolean,
+    id serial primary key
+);
+
+DELETE FROM categoria;
+ALTER SEQUENCE categoria_id_seq RESTART WITH 1;
+SELECT * FROM categoria;
+
+-- drop table movimentacao;
+-- Campos: valor, data, hora, descricao, tipo, idcategoria
+create table movimentacao (
+    valor decimal(10,2),
+    data date,
+    hora time,
+    descricao varchar(500),
+    tipo boolean,
+    idcategoria integer REFERENCES categoria (id),
+    id serial primary key
+);
+
+DELETE FROM movimentacao;
+ALTER SEQUENCE movimentacao_id_seq RESTART WITH 1;
+SELECT * FROM movimentacao;
+
+
+------------ INSERÇÃO DE ALGUNS DADOS INICIAIS ---------------------------------
+INSERT INTO categoria (titulo, tipo) VALUES
+        ('Salario',true),
+        ('Mesada',true),
+        ('Extras',true),
+        ('Alimentação',false),
+        ('Luz',false),
+        ('Agua',false),
+        ('Condominio',false),
+        ('Gasolina',false)    
+;
+
