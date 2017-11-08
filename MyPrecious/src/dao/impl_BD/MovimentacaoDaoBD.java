@@ -105,12 +105,12 @@ public class MovimentacaoDaoBD extends DaoBd<Movimentacao> implements Movimentac
         try {
             conectar(sql);
             ResultSet resultado = comando.executeQuery();
-            while (resultado.next()) {              //id, valor, data, hora, descricao, tipo, idcategoria
-                int id = resultado.getInt("id");                //pegando id
-                double valor = resultado.getDouble("valor");    //pegando valor
-                Date dataSql = resultado.getDate("data");       //pegando data
+            while (resultado.next()) {              
+                int id = resultado.getInt("id");                
+                double valor = resultado.getDouble("valor");    
+                Date dataSql = resultado.getDate("data");       
                 LocalDate data = dataSql.toLocalDate();
-                Time horaSql = resultado.getTime("hora");       //pegando hora
+                Time horaSql = resultado.getTime("hora");       
                 LocalTime hora = horaSql.toLocalTime();
                 String descricao = resultado.getString("descricao");
                 boolean tipo = resultado.getBoolean("tipo");
@@ -138,12 +138,12 @@ public class MovimentacaoDaoBD extends DaoBd<Movimentacao> implements Movimentac
             conectar(sql);
             comando.setBoolean(1, tipoEscolhido);
             ResultSet resultado = comando.executeQuery();
-            while (resultado.next()) {              //id, valor, data, hora, descricao, tipo, idcategoria
-                int id = resultado.getInt("id");                //pegando id
-                double valor = resultado.getDouble("valor");    //pegando valor
-                Date dataSql = resultado.getDate("data");       //pegando data
+            while (resultado.next()) {             
+                int id = resultado.getInt("id");                
+                double valor = resultado.getDouble("valor");    
+                Date dataSql = resultado.getDate("data");       
                 LocalDate data = dataSql.toLocalDate();
-                Time horaSql = resultado.getTime("hora");       //pegando hora
+                Time horaSql = resultado.getTime("hora");       
                 LocalTime hora = horaSql.toLocalTime();
                 String descricao = resultado.getString("descricao");
                 boolean tipo = resultado.getBoolean("tipo");
