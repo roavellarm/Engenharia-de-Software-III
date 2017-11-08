@@ -57,11 +57,11 @@ $ git push -u origin master
 $ git branch NomeDoMeuBranch
 
 ### Para entrar no branch
-$ git checkout NomeDoMeuBranch
+$ git checkout -b NomeDoMeuBranch
 
 [apos adicionar novos arquivos ou fazer as alterações, adições e commits:]
 ### Para voltar ao master
-$ git checkout master
+$ git checkout -b master
 
 ### Para incorporar meu branch ao master novamente
 $ git merge NomeDoMeuBranch
