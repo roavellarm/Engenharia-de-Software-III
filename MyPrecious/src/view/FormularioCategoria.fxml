@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="painelFormularioCategoria" prefHeight="545.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoriaController">
+    <children>
+      <SplitPane layoutY="26.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <VBox prefHeight="416.0" prefWidth="318.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="748.0">
+                           <children>
+                              <TextField fx:id="textField" layoutX="288.0" layoutY="141.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                              <Label alignment="CENTER" layoutX="313.0" layoutY="111.0" text="Titulo da Categoria" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                              <Label alignment="CENTER" layoutX="268.0" layoutY="34.0" text="FORMULARIO CATEGORIA" textAlignment="CENTER" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="261.0" prefWidth="748.0">
+                           <children>
+                              <RadioButton fx:id="radReceita" alignment="CENTER_LEFT" layoutX="330.0" layoutY="55.0" mnemonicParsing="false" text="Receita">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tipogroup" />
+                                 </toggleGroup>
+                                 <padding>
+                                    <Insets right="30.0" />
+                                 </padding>
+                              </RadioButton>
+                              <RadioButton fx:id="radDespesa" layoutX="331.0" layoutY="107.0" mnemonicParsing="false" text="Despesa" toggleGroup="$tipogroup" />
+                           </children>
+                        </AnchorPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button onAction="#accionSalvar" prefHeight="400.0" prefWidth="800.0" text="Salvar" />
+                              <Button onAction="#accionCancelar" prefHeight="400.0" prefWidth="800.0" text="Cancelar" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+    </children>
+</AnchorPane>

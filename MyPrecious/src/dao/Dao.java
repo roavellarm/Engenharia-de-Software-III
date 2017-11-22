@@ -9,7 +9,11 @@ import java.util.List;
 
 /**
  *
+<<<<<<< HEAD
  * @author rodrigo
+=======
+ * @author francke
+>>>>>>> b22852bd592ade8c511fe45dd179bf17158c0c96
  */
 public interface Dao<T> {
     public void salvar(T dominio);
