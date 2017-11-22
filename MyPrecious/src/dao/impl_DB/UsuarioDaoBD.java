@@ -35,7 +35,7 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
                 id = resultado.getInt("id");
-                dominio.setId(id);
+                // dominio.setId(id); teste git
             }
             else{
                 System.err.println("Erro de Sistema - Nao gerou o id conforme esperado!");
