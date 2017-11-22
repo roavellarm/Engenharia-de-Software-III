@@ -1,5 +1,5 @@
 Aqui vão ficar os arquivos fxml das views (telas do sistema):
-Exemplo:
+Exemplos:
 Dashboard.fxml
 CategoriaFormulario.fxml
 MovimentacaoFormulario.fxml
