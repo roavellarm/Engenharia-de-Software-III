@@ -35,7 +35,7 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
                 id = resultado.getInt("id");
-                // dominio.setId(id); teste git
+                dominio.setID(id);
             }
             else{
                 System.err.println("Erro de Sistema - Nao gerou o id conforme esperado!");
@@ -56,7 +56,7 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
             String sql = "DELETE FROM usuario WHERE id = ?";
 
             conectar(sql);
-            comando.setInt(1, dominio.getId());
+            comando.setInt(1, dominio.getID());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
@@ -121,13 +121,12 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                int id = resultado.getInt("id");                //pegando id
-
+                int idUsuario = resultado.getInt("id");
                 String nome = resultado.getString("nome");
                 String sobrenome = resultado.getString("sobrenome");
                 String email = resultado.getString("email");
                 String senha = resultado.getString("senha");
-                Usuario moviment = new Usuario(id, nome, sobrenome, email, senha);
+                Usuario moviment = new Usuario(idUsuario, nome, sobrenome, email, senha);
                 return moviment;
             }
         } catch (SQLException ex) {
