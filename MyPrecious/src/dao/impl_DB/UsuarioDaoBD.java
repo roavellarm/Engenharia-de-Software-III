@@ -28,9 +28,9 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
                         + "VALUES (?,?,?,?)";
             conectarObtendoId(sql);
             comando.setString(1, dominio.getNome());
-            comando.setString(4, dominio.getSobrenome());
-            comando.setString(5, dominio.getEmail());
-            comando.setString(6, dominio.getSenha());
+            comando.setString(2, dominio.getSobrenome());
+            comando.setString(3, dominio.getEmail());
+            comando.setString(4, dominio.getSenha());
             comando.executeUpdate();
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
@@ -110,7 +110,7 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
         }
         return listaUsuarios;
     }
-
+    
     @Override
     public Usuario procurarPorId(int id) {
         String sql = "SELECT * FROM usuario WHERE id = ?";
@@ -138,4 +138,28 @@ public class UsuarioDaoBD extends DaoBd<Usuario> implements UsuarioDAO{
         return (null);
     }
     
+    @Override
+    public Usuario autenticar(String email, String senha) {
+        String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
+        try {
+            conectar(sql);
+            comando.setString(1, email);
+            comando.setString(2, senha);
+
+            ResultSet resultado = comando.executeQuery();
+            if (resultado.next()) {
+                int id = resultado.getInt("id");
+                String nome = resultado.getString("nome");
+                String sobrenome = resultado.getString("sobrenome");
+                Usuario usuario = new Usuario(id, nome, sobrenome, email, senha);
+                return usuario;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro de Sistema - Problema ao buscar o Usuario no Banco de Dados!");
+            throw new BDException(ex);
+        } finally {
+            fecharConexao();
+        }
+        return (null);
+    }
 }

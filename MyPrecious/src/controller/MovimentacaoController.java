@@ -209,17 +209,14 @@ public class MovimentacaoController implements Initializable  {
         //listarPorMes();
     }
 
-    @FXML
-    private void accionVoltarMes(ActionEvent event) {
-        LocalDate mes = datePickerMes.getValue();
-        datePickerMes.setValue(mes.minusMonths(1));
-        isPorMes = true;
-        //listarPorMes();
-    }
+    
     
     @FXML
-    private void btListarTodosAnos (ActionEvent event) {
-        isPorMes = false;
+    private void MenuCategoria(ActionEvent event) throws IOException {
+        Stage stage = (Stage) telaMain.getScene().getWindow();
+        stage.setTitle("MENU CATEGORIA");
+        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Categoria.fxml"));
+        stage.setScene(new Scene(painelTelaPrincipal));
     }
     
     @FXML
@@ -250,8 +247,8 @@ public class MovimentacaoController implements Initializable  {
     @FXML
     private void voltarMain(ActionEvent event) throws IOException {
         Stage stage = (Stage) telaMain.getScene().getWindow();
-        stage.setTitle("MY MONEY - MENU INICIAL");
-        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Main.fxml"));
+        stage.setTitle("MY MONEY - Login");
+        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
         stage.setScene(new Scene(painelTelaPrincipal));
     }
 

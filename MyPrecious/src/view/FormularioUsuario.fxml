@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="telaMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane id="AnchorPane" fx:id="telaMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e8e5" height="359.0" layoutX="14.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="572.0" />
+      <Rectangle fx:id="telaMain" arcHeight="5.0" arcWidth="5.0" fill="#e5e8e5" height="359.0" layoutX="14.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="572.0" />
       <TextField fx:id="nome" layoutX="205.0" layoutY="131.0" prefHeight="25.0" prefWidth="241.0" />
-      <Button fx:id="btSalvar" layoutX="358.0" layoutY="329.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Salvar" />
+      <Button layoutX="358.0" layoutY="329.0" mnemonicParsing="false" onAction="#salvar" prefHeight="31.0" prefWidth="72.0" text="Salvar" />
       <Text layoutX="118.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobrenome">
          <font>
             <Font size="14.0" />
@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="btVoltar" layoutX="189.0" layoutY="329.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Voltar" />
+      <Button layoutX="189.0" layoutY="329.0" mnemonicParsing="false" onAction="#voltar" prefHeight="31.0" prefWidth="72.0" text="Voltar" />
       <Label layoutX="210.0" layoutY="35.0" />
       <Text layoutX="156.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
          <font>

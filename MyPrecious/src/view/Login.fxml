@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="telaMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane id="AnchorPane" fx:id="telaMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e8e5" height="359.0" layoutX="14.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="572.0" />
-      <TextField layoutX="189.0" layoutY="253.0" prefHeight="25.0" prefWidth="241.0" />
-      <PasswordField layoutX="189.0" layoutY="288.0" prefHeight="25.0" prefWidth="241.0" />
-      <Button layoutX="358.0" layoutY="329.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Entrar" />
+      <TextField fx:id="loginText" layoutX="189.0" layoutY="253.0" prefHeight="25.0" prefWidth="241.0" />
+      <PasswordField fx:id="senhaText" layoutX="189.0" layoutY="288.0" prefHeight="25.0" prefWidth="241.0" />
+      <Button layoutX="358.0" layoutY="329.0" mnemonicParsing="false" onAction="#entrar" prefHeight="31.0" prefWidth="72.0" text="Entrar" />
       <Text layoutX="136.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha">
          <font>
             <Font size="14.0" />
@@ -27,7 +27,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="189.0" layoutY="329.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Cadastrar" />
+      <Button layoutX="189.0" layoutY="329.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="31.0" prefWidth="72.0" text="Cadastrar" />
       <Label layoutX="210.0" layoutY="35.0">
          <graphic>
             <ImageView fitHeight="200.0" fitWidth="200.0">

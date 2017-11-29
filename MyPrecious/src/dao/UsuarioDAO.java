@@ -12,5 +12,5 @@ import dominio.Usuario;
  * @author Rodrigo Avellar
  */
 public interface UsuarioDAO extends Dao<Usuario>{
-
+    public Usuario autenticar(String email, String senha);
 }
