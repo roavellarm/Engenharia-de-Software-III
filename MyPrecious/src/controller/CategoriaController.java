@@ -179,7 +179,7 @@ public class CategoriaController implements Initializable {
     private void voltarMain(ActionEvent event) throws IOException {
         Stage stage = (Stage) telaMain.getScene().getWindow();
         stage.setTitle("MY MONEY - MENU INICIAL");
-        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Main.fxml"));
+        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Movimentacao.fxml"));
         stage.setScene(new Scene(painelTelaPrincipal));
     }
 
