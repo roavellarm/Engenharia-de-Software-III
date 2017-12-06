@@ -16,11 +16,12 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     public void salvar(Categoria cat) {
         int id = 0;
         try {
-            String sql = "INSERT INTO categoria (titulo, tipo) "
-                        + "VALUES (?,?)";
+            String sql = "INSERT INTO categoria (user_id, titulo, tipo) "
+                        + "VALUES (?, ?,?)";
             conectarObtendoId(sql);
-            comando.setString(1, cat.getTitulo());
-            comando.setBoolean(2, cat.getTipoBoolean());
+            comando.setInt(1, cat.getUserId());
+            comando.setString(2, cat.getTitulo());
+            comando.setBoolean(3, cat.getTipoBoolean());
             comando.executeUpdate();
             
             ResultSet resultado = comando.getGeneratedKeys();
@@ -60,11 +61,12 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     @Override
     public void atualizar(Categoria cat) {
         try {
-            String sql = "UPDATE categoria SET titulo=?, tipo=? WHERE id=?";
+            String sql = "UPDATE categoria SET user_id=?, titulo=?, tipo=? WHERE id=?";
             conectar(sql);
-            comando.setString(1, cat.getTitulo());
-            comando.setBoolean(2, cat.getTipoBoolean());
-            comando.setInt(3, cat.getId());
+            comando.setInt(1, cat.getId());
+            comando.setString(2, cat.getTitulo());
+            comando.setBoolean(3, cat.getTipoBoolean());
+            comando.setInt(4, cat.getId());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
@@ -85,9 +87,10 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 int id = resultado.getInt("id");
+                int user_id = resultado.getInt("user_id");
                 String titulo = resultado.getString("titulo");
                 boolean tipo = resultado.getBoolean("tipo");
-                Categoria cat = new Categoria(id, titulo, tipo);
+                Categoria cat = new Categoria(id, user_id, titulo, tipo);
                 listaCategorias.add(cat);      
             }
         } catch (SQLException ex) {
@@ -107,9 +110,10 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
             comando.setInt(1, id);
             ResultSet resultado = comando.executeQuery();
             if (resultado.next()) {
+                int user_id = resultado.getInt("user_id");
                 String titulo = resultado.getString("titulo");
                 boolean tipo = resultado.getBoolean("tipo");
-                Categoria cat = new Categoria(id, titulo, tipo);
+                Categoria cat = new Categoria(id, user_id, titulo, tipo);
                 return cat;
             }
 
@@ -124,7 +128,7 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     
     @Override
     public Categoria procurarPorNome(String nome) {
-        String sql = "SELECT * FROM categoria WHERE titulo = ?";
+        String sql = "SELECT * FROM categoria WHERE titulo = ? and user_id = ?";
 
         try {
             conectar(sql);
@@ -134,9 +138,10 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
 
             if (resultado.next()) {
                 int id = resultado.getInt("id");
+                int user_id = resultado.getInt("user_id");
                 String titulo = resultado.getString("titulo");
                 Boolean tipo = resultado.getBoolean("tipo");
-                Categoria cat = new Categoria(id, titulo, tipo);
+                Categoria cat = new Categoria(id, user_id, titulo, tipo);
                 return cat;
             }
 
@@ -191,18 +196,20 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     }
 
     @Override
-    public List<Categoria> listarPorTipo(Boolean op) {
+    public List<Categoria> listarPorTipo(int user_id, Boolean op) {
         List<Categoria> listaCategorias = new ArrayList<>();
-        String sql = "SELECT * FROM categoria WHERE tipo = ?";
+        String sql = "SELECT * FROM categoria WHERE user_id=? and tipo = ?";
         try {
             conectar(sql);
-            comando.setBoolean(1,op);
+            comando.setBoolean(1,user_id);
+            comando.setInt(2,op);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 String titulo = resultado.getString("titulo");
                 Boolean tipo = resultado.getBoolean("tipo");
+                int user_id = resultado.getInt("user_id");
                 int id = resultado.getInt("id");
-                Categoria cat = new Categoria(id, titulo, tipo);
+                Categoria cat = new Categoria(id,user_id, titulo, tipo);
                 listaCategorias.add(cat);
             }
         } catch (SQLException ex) {
