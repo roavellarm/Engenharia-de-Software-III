@@ -22,6 +22,9 @@ public class Movimentacao {
     public Movimentacao(boolean tipo) {
         this.tipo = tipo;
     }
+    
+    public Movimentacao() {
+    }
 
     public Movimentacao(double valor, Categoria categoria, String descricao, boolean tipo) {
         this.valor = valor;

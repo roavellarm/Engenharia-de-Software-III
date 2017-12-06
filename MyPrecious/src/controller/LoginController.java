@@ -114,19 +114,26 @@ public class LoginController implements Initializable  {
             user.setSenha(senha.getText());
             usuarioNegocio.salvar(user);
             PrintUtil.mostrarMenssagemSucesso("Cadastro realizado com sucesso!");
-            limparCampos(); 
+            limparCampos2();
+            Stage stage = (Stage) painelFormularioUsuario.getScene().getWindow();
+            stage.setTitle("MY MONEY - Login");
+            Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
+            stage.setScene(new Scene(painelTelaPrincipal));
         } catch (NegocioException ex) {
             PrintUtil.mostrarMensagemErro("Problema ao adicionar Usuário");
         }
     }
      
-    private void limparCampos() {
-        loginText.clear();
+    private void limparCampos2() {
         nome.clear();
         sobrenome.clear();
         email.clear();
         senha.clear();
     } 
-
+     
+    private void limparCampos() {
+        loginText.clear();
+        senhaText.clear();
+    } 
 }
 
