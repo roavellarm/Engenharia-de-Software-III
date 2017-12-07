@@ -2,9 +2,8 @@ package negocio;
 
 import dao.CategoriaDAO;
 import dao.MovimentacaoDAO;
-import dao.impl_BD.CategoriaDaoBD;
-import dao.impl_BD.MovimentacaoDaoBD;
-import dominio.Categoria;
+import dao.impl_DB.CategoriaDaoBD;
+import dao.impl_DB.MovimentacaoDaoBD;
 import dominio.Movimentacao;
 import java.util.List;
 

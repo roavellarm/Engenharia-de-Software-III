@@ -9,6 +9,7 @@ import java.time.LocalTime;
  */
 public class Movimentacao {
     private int id;
+    private int user_id;
     private double valor;
     private LocalDate data;
     private LocalTime hora;
@@ -26,7 +27,8 @@ public class Movimentacao {
     public Movimentacao() {
     }
 
-    public Movimentacao(double valor, Categoria categoria, String descricao, boolean tipo) {
+    public Movimentacao(int user_id, double valor, Categoria categoria, String descricao, boolean tipo) {
+        this.user_id = user_id;
         this.valor = valor;
         this.data = LocalDate.now();
         this.hora = LocalTime.now();
@@ -35,8 +37,9 @@ public class Movimentacao {
         this.tipo = tipo;        
     }
     
-    public Movimentacao(int id, double valor, LocalDate data, LocalTime hora, Categoria categoria, String descricao, boolean tipo) {
+    public Movimentacao(int id, int user_id, double valor, LocalDate data, LocalTime hora, Categoria categoria, String descricao, boolean tipo) {
         this.id = id;
+        this.user_id = user_id;
         this.valor = valor;
         this.data = data;
         this.hora = hora;
@@ -45,7 +48,8 @@ public class Movimentacao {
         this.tipo = tipo;  
     }
     
-    public Movimentacao(double valor, LocalDate data, LocalTime hora, Categoria categoria, String descricao, boolean tipo) {
+    public Movimentacao(int user_id, double valor, LocalDate data, LocalTime hora, Categoria categoria, String descricao, boolean tipo) {
+        this.user_id = user_id;
         this.valor = valor;
         this.data = data;
         this.hora = hora;
@@ -56,6 +60,10 @@ public class Movimentacao {
     
     public int getId() {
         return id;
+    }
+    
+    public int getUser_id() {
+        return user_id;
     }
     
     public double getValor() {
@@ -93,6 +101,10 @@ public class Movimentacao {
     
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setValor(double valor) {

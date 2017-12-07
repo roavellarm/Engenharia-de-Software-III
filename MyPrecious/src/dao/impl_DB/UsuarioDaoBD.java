@@ -7,10 +7,8 @@ package dao.impl_DB;
 
 import dao.UsuarioDAO;
 import dominio.Usuario;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 

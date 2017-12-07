@@ -16,7 +16,7 @@ public class Categoria {
         this.tipo = tipo;
     }
    
-    public Categoria(int id,int user_id, String titulo, boolean tipo) {
+    public Categoria(int id, int user_id, String titulo, boolean tipo) {
         this.id = id;
         this.user_id = user_id;
         this.titulo = titulo;

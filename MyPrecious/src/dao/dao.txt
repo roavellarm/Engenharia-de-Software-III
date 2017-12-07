@@ -1,3 +1,0 @@
-Aqui vão ficar as classes DAO para conexão com banco de dados, por ex.:
-CategoriaDAO
-MovimentacaoDAO, etc

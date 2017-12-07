@@ -87,7 +87,7 @@ public class CategoriaController implements Initializable {
     private void adicionar(ActionEvent event) throws IOException {
         try {
             Categoria cat = new Categoria(textField.getText(),tipo);
-            categoriaNegocio.salvar(cat);
+            categoriaNegocio.salvar(LoginController.TOKEN_USER_ID,cat);
             PrintUtil.mostrarMenssagemSucesso("Cadastro realizado com sucesso!");
             limparCampo();
             carregarListaCategorias();  
@@ -151,7 +151,7 @@ public class CategoriaController implements Initializable {
                 String titulo = textField.getText();
                 Boolean tipoCat = categoriaSelecionada.getTipoBoolean();                
                 Categoria cat = new Categoria(titulo, tipoCat);
-                categoriaNegocio.salvar(cat);
+                categoriaNegocio.salvar(LoginController.TOKEN_USER_ID,cat);
                 stage.close();
             } catch (NegocioException ex) {
                 PrintUtil.mostrarMensagemErro(ex.getMessage());
@@ -187,7 +187,7 @@ public class CategoriaController implements Initializable {
     private void listarPorNome(ActionEvent event) throws IOException {
         try {
             Categoria cat = new Categoria(textField.getText(),tipo);
-            boolean resposta = categoriaNegocio.categoriaExiste(cat.getTitulo());
+            boolean resposta = categoriaNegocio.categoriaExiste(LoginController.TOKEN_USER_ID,cat.getTitulo());
             if (resposta){
                 PrintUtil.mostrarMenssagemSucesso("Categoria "+cat.getTitulo()+" já existe!");
             } else {
@@ -246,7 +246,7 @@ public class CategoriaController implements Initializable {
 
     private void mostrarListaPorTipo() {
         try {
-            listaCategorias = categoriaNegocio.listarPorTipo(this.tipo);
+            listaCategorias = categoriaNegocio.listarPorTipo(LoginController.TOKEN_USER_ID,this.tipo);
             observableListaCategorias = FXCollections.observableArrayList(listaCategorias);
             tabelaCat.setItems(observableListaCategorias);
         } catch (NegocioException ex) {

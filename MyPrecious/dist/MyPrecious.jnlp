@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="MyPrecious.jar" size="137568" download="eager" />
-    <jar href="lib\postgresql-42.0.0.jre6.jar" size="702601" download="eager" />
+    <jar href="MyPrecious.jar" size="121742" download="eager" />
+    <jar href="lib/postgresql-42.0.0.jre6.jar" size="702601" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="MyPrecious" >
     <param name="requiredFXVersion" value="8.0+"/>

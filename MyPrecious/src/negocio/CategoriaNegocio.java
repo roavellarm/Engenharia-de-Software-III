@@ -2,7 +2,7 @@ package negocio;
 
 import dominio.Categoria;
 import dao.CategoriaDAO;
-import dao.impl_BD.CategoriaDaoBD;
+import dao.impl_DB.CategoriaDaoBD;
 import java.util.List;
 
 public class CategoriaNegocio {
@@ -13,9 +13,9 @@ public class CategoriaNegocio {
         categoriaDao = new CategoriaDaoBD();
     }
 
-    public void salvar(Categoria cat) throws NegocioException {
+    public void salvar(int user_id, Categoria cat) throws NegocioException {
         this.validarCamposObrigatorios(cat);
-        this.validarTituloExistente(cat);
+        this.validarTituloExistente(user_id, cat);
         categoriaDao.salvar(cat);
     }
 
@@ -38,16 +38,16 @@ public class CategoriaNegocio {
         categoriaDao.atualizar(categoria);
     }
 
-    public List<Categoria> listarPorTipo(Boolean tipo) throws NegocioException {
-        return(categoriaDao.listarPorTipo(tipo));
+    public List<Categoria> listarPorTipo(int user_id, Boolean tipo) throws NegocioException {
+        return(categoriaDao.listarPorTipo(user_id, tipo));
     }
 
-    public boolean temAlgumaCatDespesa() {
-        return categoriaDao.temAlgumaCatDespesa();
+    public boolean temAlgumaCatDespesa(int user_id) {
+        return categoriaDao.temAlgumaCatDespesa(user_id);
     }
     
-    public boolean temAlgumaCatReceita() {
-        return categoriaDao.temAlgumaCatReceita();
+    public boolean temAlgumaCatReceita(int user_id) {
+        return categoriaDao.temAlgumaCatReceita(user_id);
     }
 
     private void validarCamposObrigatorios(Categoria cat) throws NegocioException {
@@ -56,27 +56,27 @@ public class CategoriaNegocio {
         }        
     }
 
-    private void validarTituloExistente(Categoria cat) throws NegocioException {
-        if (categoriaExiste(cat.getTitulo())) {
+    private void validarTituloExistente(int user_id, Categoria cat) throws NegocioException {
+        if (categoriaExiste(user_id, cat.getTitulo())) {
             throw new NegocioException("Categoria ja existente");
         }        
     }
     
-    public boolean categoriaExiste(String titulo) throws NegocioException {
+    public boolean categoriaExiste(int user_id, String titulo) throws NegocioException {
         if(titulo == null || titulo.isEmpty()){
             throw new NegocioException("Preencha o título da categoria no campo!");
         } else {
-            Categoria categoria = categoriaDao.procurarPorNome(titulo);
+            Categoria categoria = categoriaDao.procurarPorNome(user_id, titulo);
             return (categoria != null);
         }
     }
     
-    public Categoria procurarPorNome (String nome)throws NegocioException {
+    public Categoria procurarPorNome (int user_id, String nome)throws NegocioException {
         if (nome.isEmpty() || nome == null){
             throw new NegocioException("Preencha o campo com o nome da Categoria");
         }
         
-        Categoria cat = categoriaDao.procurarPorNome(nome);
+        Categoria cat = categoriaDao.procurarPorNome(user_id, nome);
         if (cat.getId() == 0) {
             throw new NegocioException("Categoria não existe");
         }

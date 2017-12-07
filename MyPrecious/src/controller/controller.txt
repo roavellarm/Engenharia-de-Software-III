@@ -1,4 +1,0 @@
-Aqui vão ficar as classes de controllers das views:
-MainController
-CategoriaController
-MovimentacaoController, etc

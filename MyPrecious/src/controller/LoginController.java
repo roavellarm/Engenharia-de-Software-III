@@ -27,7 +27,8 @@ import view.PrintUtil;
  * @author rodrigo
  */
 public class LoginController implements Initializable  {
-
+    public static int TOKEN_USER_ID;
+    
     @FXML
     private AnchorPane telaMain;
     @FXML
@@ -66,6 +67,7 @@ public class LoginController implements Initializable  {
         
         try {
             Usuario user = usuarioNegocio.validarCamposObrigatoriosLogin(valorlogin, valorsenha);
+            TOKEN_USER_ID = user.getID();
             Stage stage = (Stage) telaMain.getScene().getWindow();
             stage.setTitle("MENU MOVIMENTAÇÕES");
             Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/Movimentacao.fxml"));

@@ -1,6 +1,6 @@
 package controller;
 
-import dao.impl_BD.MovimentacaoDaoBD;
+import dao.impl_DB.MovimentacaoDaoBD;
 import dominio.Categoria;
 import dominio.Movimentacao;
 import java.io.IOException;
@@ -47,7 +47,7 @@ import view.PrintUtil;
  * @author rodrigo
  */
 public class MovimentacaoController implements Initializable  {
-
+    int TOKEN_USER_ID;
     @FXML
     private AnchorPane telaMain;
     @FXML
@@ -92,6 +92,7 @@ public class MovimentacaoController implements Initializable  {
     // Controller de Menu Movimentacao
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TOKEN_USER_ID = LoginController.TOKEN_USER_ID;
         categoriaNegocio = new CategoriaNegocio();
         movimentacaoNegocio = new MovimentacaoNegocio();
         group = new ToggleGroup();
@@ -402,10 +403,11 @@ public class MovimentacaoController implements Initializable  {
                     categoriaSelecionada = null;
                 } else{
                     String catEscolhida = ComboCategoria.getValue().toString();
-                    categoriaSelecionada = catNegocio.procurarPorNome(catEscolhida);
+                    categoriaSelecionada = catNegocio.procurarPorNome(LoginController.TOKEN_USER_ID, catEscolhida);
                 }
                 String descricao = textAreaDescricao.getText();
                 Movimentacao mov = new Movimentacao(
+                        LoginController.TOKEN_USER_ID,
                         valor,
                         data,
                         hora,
@@ -455,7 +457,7 @@ public class MovimentacaoController implements Initializable  {
                 if(ComboCategoria.getValue() == null){
                     movimentacaoSelecionada.setCategoria(null);
                 } else{
-                    Categoria categoriaEscolhida = categoriaNegocio.procurarPorNome(ComboCategoria.getValue());
+                    Categoria categoriaEscolhida = categoriaNegocio.procurarPorNome(LoginController.TOKEN_USER_ID, ComboCategoria.getValue());
                     movimentacaoSelecionada.setCategoria(categoriaEscolhida);
                 }
                 movimentacaoSelecionada.setDescricao(textAreaDescricao.getText());
@@ -470,7 +472,7 @@ public class MovimentacaoController implements Initializable  {
 
     private void carregaComboBox() {
         try {
-            listaCategorias = catNegocio.listarPorTipo(this.tipo);
+            listaCategorias = catNegocio.listarPorTipo(LoginController.TOKEN_USER_ID, this.tipo);
             for (Categoria x : listaCategorias){
                 ComboCategoria.getItems().addAll(x.getTitulo());
             }

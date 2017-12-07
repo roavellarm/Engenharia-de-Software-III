@@ -28,8 +28,7 @@ public class UsuarioNegocio {
     }
     
     public Usuario validarCamposObrigatoriosLogin(String login, String senha) throws NegocioException {
-        Usuario user = usuarioDAO.autenticar(login, senha);
-        
+        Usuario user = usuarioDAO.autenticar(login, senha);    
         if(user == null) {
             throw new NegocioException("Autenticação invalida!");
         } else {

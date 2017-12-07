@@ -127,21 +127,21 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     }
     
     @Override
-    public Categoria procurarPorNome(String nome) {
+    public Categoria procurarPorNome(int user_id, String nome) {
         String sql = "SELECT * FROM categoria WHERE titulo = ? and user_id = ?";
 
         try {
             conectar(sql);
             comando.setString(1, nome);
-
+            comando.setInt(2, user_id);
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
                 int id = resultado.getInt("id");
-                int user_id = resultado.getInt("user_id");
+                int userId = resultado.getInt("user_id");
                 String titulo = resultado.getString("titulo");
                 Boolean tipo = resultado.getBoolean("tipo");
-                Categoria cat = new Categoria(id, user_id, titulo, tipo);
+                Categoria cat = new Categoria(id, userId, titulo, tipo);
                 return cat;
             }
 
@@ -156,10 +156,11 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     }
     
     @Override
-    public boolean temAlgumaCatReceita() {
-        String sql = "SELECT Count(*) FROM categoria WHERE tipo = true";
+    public boolean temAlgumaCatReceita(int user_id) {
+        String sql = "SELECT Count(*) FROM categoria WHERE tipo = true and user_id = ?";
         try {
             conectar(sql);
+            comando.setInt(1, user_id);
             ResultSet resultado = comando.executeQuery();
             if (resultado.next()) {
                 int count = resultado.getInt(1);
@@ -176,10 +177,11 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     }
 
     @Override
-    public boolean temAlgumaCatDespesa() {
-                String sql = "SELECT Count(*) FROM categoria WHERE tipo = false";
+    public boolean temAlgumaCatDespesa(int userid) {
+        String sql = "SELECT Count(*) FROM categoria WHERE tipo = false and user_id = ?";
         try {
             conectar(sql);
+            comando.setInt(1, userid);
             ResultSet resultado = comando.executeQuery();
             if (resultado.next()) {
                 int count = resultado.getInt(1);
@@ -201,15 +203,15 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
         String sql = "SELECT * FROM categoria WHERE user_id=? and tipo = ?";
         try {
             conectar(sql);
-            comando.setBoolean(1,user_id);
-            comando.setInt(2,op);
+            comando.setInt(1,user_id);
+            comando.setBoolean(2,op);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 String titulo = resultado.getString("titulo");
                 Boolean tipo = resultado.getBoolean("tipo");
-                int user_id = resultado.getInt("user_id");
+                int userID = resultado.getInt("user_id");
                 int id = resultado.getInt("id");
-                Categoria cat = new Categoria(id,user_id, titulo, tipo);
+                Categoria cat = new Categoria(id,userID, titulo, tipo);
                 listaCategorias.add(cat);
             }
         } catch (SQLException ex) {
@@ -223,20 +225,22 @@ public class CategoriaDaoBD extends DaoBd<Categoria> implements CategoriaDAO{
     }
 
     @Override
-    public List<Categoria> listarPorNome(String nome) { //TESTAR!!!!        
+    public List<Categoria> listarPorNome(int userId, String nome) { //TESTAR!!!!        
         List<Categoria> listaCategorias = new ArrayList<>();
-        String sql = "SELECT * FROM categoria WHERE titulo like ?";
+        String sql = "SELECT * FROM categoria WHERE titulo like ? and user_id = ? ";
 
         try {
             conectar(sql);
             comando.setString(1, "%" + nome + "%");
+            comando.setInt(1, userId);
             ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
                 String titulo = resultado.getString("titulo");
                 Boolean tipo = resultado.getBoolean("tipo");
+                int user_id = resultado.getInt("user_id");
                 int id = resultado.getInt("id");
-                Categoria cat = new Categoria(id, titulo, tipo);
+                Categoria cat = new Categoria(id, user_id, titulo, tipo);
                 listaCategorias.add(cat);
             }
             
